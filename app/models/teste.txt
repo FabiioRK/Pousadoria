@@ -1,0 +1,11 @@
+<%= form_for @inn do |f| %>
+
+  <div class="field">
+    <%= f.label :payment_methods, 'Métodos de Pagamento' %>
+    <%= f.collection_check_boxes :payment_method_ids, PaymentMethod.all, :id, :method %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Cadastrar pousada' %>
+  </div>
+<% end %>

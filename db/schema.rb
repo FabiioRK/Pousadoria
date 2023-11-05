@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_05_145514) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_05_210447) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "district"
@@ -28,7 +28,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_145514) do
     t.string "phone_number"
     t.string "contact_email"
     t.boolean "pet_allowed"
-    t.integer "payment_method"
     t.time "checkin_time"
     t.time "checkout_time"
     t.text "description"
@@ -37,8 +36,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_145514) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "payment_method_id", null: false
     t.index ["address_id"], name: "index_inns_on_address_id"
+    t.index ["payment_method_id"], name: "index_inns_on_payment_method_id"
     t.index ["user_id"], name: "index_inns_on_user_id"
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.integer "method", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,5 +62,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_145514) do
   end
 
   add_foreign_key "inns", "addresses"
+  add_foreign_key "inns", "payment_methods"
   add_foreign_key "inns", "users"
 end

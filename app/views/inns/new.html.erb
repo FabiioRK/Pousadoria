@@ -50,20 +50,10 @@
     <%= f.check_box :pet_allowed %>
   </div>
 
-<!--  <div class="field">-->
-    <%#= f.label :payment_method, 'Métodos de Pagamento' %>
-    <%#= f.collection_check_boxes :payment_method, Inn.payment_methods.keys, {}, multiple: true %>
-<!--  </div>-->
-<!--  <div class="field">-->
-<!--    <%#= f.label 'Métodos de Pagamento' %><br>-->
-    <%# Inn.payment_methods.keys.each do |method| %>
-<!--      <label>-->
-        <%#= check_box_tag 'inn[payment_methods][]', method, @inn.payment_methods.include?(method.to_s) %>
-        <%#= method.humanize %>
-<!--      </label><br>-->
-    <%# end %>
-<!--  </div>-->
-
+  <div class="field">
+    <%= f.label :payment_method_ids, 'Métodos de pagamento' %>
+    <%= f.collection_check_boxes :payment_method_ids, PaymentMethod.methods, :first, :first %>
+  </div>
 
   <div class="field">
     <%= f.label :checkin_time %>

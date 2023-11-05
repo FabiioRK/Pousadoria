@@ -12,13 +12,6 @@ pt-BR:
         pet_allowed: 'Permite pet'
         checkin_time: 'Horário do check-in'
         checkout_time: 'Horário do check-out'
-        payment_method: 'Método de pagamento'
         description: 'Descrição'
         usage_policies: 'Políticas de uso'
         street: 'Rua'
-        address_id:
-          street: 'Rua'
-          district: 'Bairro'
-          city: 'Cidade'
-          state: 'Estado'
-          postal_code: 'CEP'

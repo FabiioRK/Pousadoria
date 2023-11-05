@@ -22,9 +22,9 @@ describe "Anfitrião cadastra uma pousada" do
     expect(page).to have_field('Cidade')
     expect(page).to have_field('CEP')
     expect(page).to have_field('Permite pet')
-    expect(page).to have_field('Método de pagamento')
-    expect(page).to have_field('Horário do check-in')
-    expect(page).to have_field('Horário do check-out')
+    expect(page).to have_content('Métodos de pagamento')
+    expect(page).to have_content('Horário do check-in')
+    expect(page).to have_content('Horário do check-out')
     expect(page).to have_field('Descrição')
     expect(page).to have_field('Políticas de uso')
   end
