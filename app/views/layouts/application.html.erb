@@ -14,7 +14,13 @@
   <header>
     <nav>
       <% if user_signed_in? %>
+        <% user = current_user %>
+        <% if user.inn.present? %>
+          <%= link_to 'Minha pousada', inn_path(user.inn.id) %>
+        <% end %>
+
         <%= current_user.email %>
+
         <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Entrar como Anfitrião', new_user_session_path %>
