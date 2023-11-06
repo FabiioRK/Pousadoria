@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_05_210447) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_06_011737) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "district"
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_210447) do
     t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "inn_id", null: false
+    t.index ["inn_id"], name: "index_addresses_on_inn_id"
   end
 
   create_table "inns", force: :cascade do |t|
@@ -32,13 +34,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_210447) do
     t.time "checkout_time"
     t.text "description"
     t.text "usage_policies"
-    t.integer "address_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "payment_method_id", null: false
-    t.index ["address_id"], name: "index_inns_on_address_id"
-    t.index ["payment_method_id"], name: "index_inns_on_payment_method_id"
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_inns_on_user_id"
   end
 
@@ -61,7 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_05_210447) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "inns", "addresses"
-  add_foreign_key "inns", "payment_methods"
+  add_foreign_key "addresses", "inns"
   add_foreign_key "inns", "users"
 end
