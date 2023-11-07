@@ -1,10 +1,10 @@
 class Inn < ApplicationRecord
+  validates :brand_name, :payment_methods, presence: true
+
   has_one :address
   accepts_nested_attributes_for :address
   belongs_to :user
 
-  # accepts_nested_attributes_for :address
-
-  # has_and_belongs_to_many :payment_methods
-  # accepts_nested_attributes_for :payment_methods
+  serialize :payment_methods, JSON
+  has_and_belongs_to_many :selected_payment_methods, class_name: 'PaymentMethod'
 end

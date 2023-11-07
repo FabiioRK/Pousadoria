@@ -47,7 +47,9 @@ describe "Anfitrião cadastra uma pousada" do
     fill_in 'Cidade', with: 'São Paulo'
     fill_in 'Estado', with: 'SP'
     check 'Permite pet'
-    check 'cash'
+    check 'Cartão de Crédito'
+    check 'Cartão de Débito'
+    check 'Pix'
     select '12', from: 'inn[checkin_time(4i)]'
     select '00', from: 'inn[checkin_time(5i)]'
     select '14', from: 'inn[checkin_time(4i)]'
@@ -60,6 +62,22 @@ describe "Anfitrião cadastra uma pousada" do
     # Assert
     inn = Inn.last
     expect(current_path).to eq "/inns/#{inn.id}"
+    expect(page).to have_content('Ativa')
+    expect(page).to have_content('Cartão de crédito')
+  end
 
+  it 'com dados incompletos' do
+    # Arrange
+    user = User.create!(email: 'fabio@gmail.com', password: '123456', account_type: :host)
+
+    # Act
+    login_as(user)
+    visit root_path
+    fill_in 'Nome Fantasia', with: ''
+    fill_in 'Razão Social', with: ''
+    click_on 'Cadastrar pousada'
+
+    # Assert
+    expect(page).to have_content('Cadastrar pousada') #Mensagens de erro nao estao aparecendo
   end
 end

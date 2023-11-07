@@ -2,6 +2,8 @@
 
 <h1>Dados da Pousada</h1>
 
+<p><strong>Status:</strong> <%= @inn.active ? 'Ativa' : 'Inativa' %></p>
+
 <p><strong>Razão Social:</strong> <%= @inn.corporate_name %></p>
 <p><strong>Nome da Marca:</strong> <%= @inn.brand_name %></p>
 <p><strong>Número de Registro:</strong> <%= @inn.registration_number %></p>
@@ -20,9 +22,21 @@
 <% end %>
 
 <p><strong>Pets Permitidos:</strong> <%= @inn.pet_allowed ? 'Sim' : 'Não' %></p>
+
+<% if @inn.payment_methods.present? %>
+  <p><strong>Métodos de pagamento:</strong></p>
+  <ul>
+    <% @inn.payment_methods.each do |method| %>
+      <li><%= PaymentMethod.human_attribute_name("method.#{method}") %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhum método de pagamento selecionado.</p>
+<% end %>
+
 <p><strong>Horário de Check-in:</strong> <%= @inn.checkin_time.strftime('%H:%M') %></p>
 <p><strong>Horário de Check-out:</strong> <%= @inn.checkout_time.strftime('%H:%M') %></p>
 <p><strong>Descrição:</strong> <%= @inn.description %></p>
 <p><strong>Políticas de Uso:</strong> <%= @inn.usage_policies %></p>
 
-<%= link_to 'Voltar', inns_path %>
+<%= link_to 'Voltar', root_path %>

@@ -1,8 +1,9 @@
 class PaymentMethod < ApplicationRecord
   enum method: {
-    cash: 0,
-    credit_card: 1,
-    debit_card: 2,
-    pix: 3,
+    credit_card: 'Cartão de Crédito',
+    debit_card: 'Cartão de Débito',
+    cash: 'Dinheiro',
+    pix: 'Pix'
   }
+  has_and_belongs_to_many :inns
 end

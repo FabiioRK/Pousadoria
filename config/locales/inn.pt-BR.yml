@@ -4,8 +4,8 @@ pt-BR:
       inn: 'Pousada'
     attributes:
       inn:
-        corporate_name: 'Nome Fantasia'
-        brand_name: 'Razão Social'
+        brand_name: 'Nome Fantasia'
+        corporate_name: 'Razão Social'
         registration_number: 'CNPJ'
         phone_number: 'Telefone'
         contact_email: 'Email'

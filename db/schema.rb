@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_06_011737) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_07_012815) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "district"
@@ -37,6 +37,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_011737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.string "payment_methods"
+    t.boolean "active", default: true
     t.index ["user_id"], name: "index_inns_on_user_id"
   end
 
