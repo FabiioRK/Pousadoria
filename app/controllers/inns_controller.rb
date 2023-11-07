@@ -1,6 +1,7 @@
 class InnsController < ApplicationController
-  before_action :set_inn, only: [:show]
+  before_action :set_inn, only: [:show, :edit, :update]
   before_action :authenticate_user!
+  before_action :authorize_access, only: [:edit, :update]
 
   def show; end
 
@@ -13,10 +14,9 @@ class InnsController < ApplicationController
     if current_user.inn.present?
       return redirect_to current_user.inn, notice: 'Você já possui uma pousada cadastrada.'
     end
+
     @inn = Inn.new(inn_params)
     @inn.user = current_user
-
-    @inn.payment_methods = params[:inn][:payment_methods].reject(&:empty?)
 
     if @inn.save
       return redirect_to @inn, notice: 'Pousada cadastrada com sucesso.'
@@ -26,13 +26,24 @@ class InnsController < ApplicationController
     render :new
   end
 
+  def edit; end
+
+  def update
+    if @inn.update(inn_params)
+      return redirect_to @inn, notice: 'Pousada atualizada com sucesso.'
+    end
+
+    flash.now.notice = 'Não foi possível atualizar a pousada'
+    render :edit
+  end
+
   private
   def set_inn
     @inn = Inn.find(params[:id])
   end
 
   def inn_params
-    params.require(:inn).permit(
+    filtered_params = params.require(:inn).permit(
       :corporate_name,
       :brand_name,
       :registration_number,
@@ -47,6 +58,8 @@ class InnsController < ApplicationController
       address_attributes: [:id, :street, :district, :city, :state, :postal_code],
       payment_methods: []
     )
+    filtered_params[:payment_methods] = filtered_params[:payment_methods].reject(&:empty?)
+    filtered_params
   end
 
   def authorize_access
@@ -55,5 +68,4 @@ class InnsController < ApplicationController
       redirect_to root_path, alert: 'Você não tem permissão para editar essa pousada.'
     end
   end
-
 end

@@ -1,5 +1,5 @@
 class Inn < ApplicationRecord
-  validates :brand_name, :payment_methods, presence: true
+  # validates :brand_name, :payment_methods, presence: true
 
   has_one :address
   accepts_nested_attributes_for :address

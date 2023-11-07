@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_07_012815) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_07_030938) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "district"
@@ -30,8 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_07_012815) do
     t.string "phone_number"
     t.string "contact_email"
     t.boolean "pet_allowed"
-    t.time "checkin_time"
-    t.time "checkout_time"
+    t.time "checkin_time", default: "2000-01-01 12:00:00"
+    t.time "checkout_time", default: "2000-01-01 14:00:00"
     t.text "description"
     t.text "usage_policies"
     t.datetime "created_at", null: false

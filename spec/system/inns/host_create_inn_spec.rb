@@ -11,8 +11,8 @@ describe "Anfitrião cadastra uma pousada" do
 
     # Assert
     expect(current_path).to eq new_inn_path
-    expect(page).to have_field('Nome Fantasia')
     expect(page).to have_field('Razão Social')
+    expect(page).to have_field('Nome Fantasia')
     expect(page).to have_field('CNPJ')
     expect(page).to have_field('Telefone')
     expect(page).to have_field('Email')
@@ -46,6 +46,7 @@ describe "Anfitrião cadastra uma pousada" do
     fill_in 'Bairro', with: 'Centro'
     fill_in 'Cidade', with: 'São Paulo'
     fill_in 'Estado', with: 'SP'
+    fill_in 'CEP', with: '01153-000'
     check 'Permite pet'
     check 'Cartão de Crédito'
     check 'Cartão de Débito'
@@ -57,6 +58,7 @@ describe "Anfitrião cadastra uma pousada" do
     fill_in 'Descrição', with: 'Alguma Descrição'
     fill_in 'Políticas de uso', with: 'Algumas Políticas de uso'
     click_on 'Cadastrar pousada'
+    visit root_path
     click_on 'Minha pousada'
 
     # Assert
