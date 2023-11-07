@@ -16,6 +16,7 @@
       <% if user_signed_in? %>
         <% if current_user.inn.present? && current_user.inn.valid? %>
           <%= link_to 'Minha pousada', inn_path(current_user.inn.id) %>
+          <%= link_to 'Meus quartos', inn_rooms_path(current_user.inn.id) %>
         <% end %>
 
         <%= current_user.email %>

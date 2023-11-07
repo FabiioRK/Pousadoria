@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    models:
+      room: 'Quarto'
+    attributes:
+      room:
+        name: 'Nome'
+        description: 'Descrição'
+        dimension: 'Dimensão'
+        max_accommodation: 'Acomodação máxima'
+        standard_price: 'Preço padrão'
+        has_bathroom: 'Possui banheiro'
+        has_balcony: 'Possui varanda'
+        has_air_conditioner: 'Possui ar-condicionado'
+        has_tv: 'Possui tv'
+        has_closet: 'Possui guarda-roupa'
+        has_safe: 'Possui cofre'
+        is_disabled_accessible: 'Acessível para deficientes'
+        active: 'Quarto ativo'

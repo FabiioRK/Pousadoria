@@ -1,0 +1,60 @@
+<%= form_for [inn, room] do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :dimension %>
+    <%= f.number_field :dimension %>
+  </div>
+  <div class="field">
+    <%= f.label :max_accommodation %>
+    <%= f.number_field :max_accommodation %>
+  </div>
+  <div class="field">
+    <%= f.label :standard_price %>
+    <%= f.number_field :standard_price %>
+  </div>
+  <div class="field">
+    <%= f.label :has_bathroom %>
+    <%= f.check_box :has_bathroom %>
+  </div>
+  <div class="field">
+    <%= f.label :has_balcony %>
+    <%= f.check_box :has_balcony %>
+  </div>
+  <div class="field">
+    <%= f.label :has_air_conditioner %>
+    <%= f.check_box :has_air_conditioner %>
+  </div>
+  <div class="field">
+    <%= f.label :has_tv %>
+    <%= f.check_box :has_tv %>
+  </div>
+  <div class="field">
+    <%= f.label :has_closet %>
+    <%= f.check_box :has_closet %>
+  </div>
+  <div class="field">
+    <%= f.label :has_safe %>
+    <%= f.check_box :has_safe %>
+  </div>
+  <div class="field">
+    <%= f.label :is_disabled_accessible %>
+    <%= f.check_box :is_disabled_accessible %>
+  </div>
+  <div class="field">
+    <% if room.valid? %>
+      <%= f.label :active %>
+      <%= f.check_box :active %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Salvar' %>
+  </div>
+<% end %>
+

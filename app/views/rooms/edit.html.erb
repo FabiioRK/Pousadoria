@@ -1,0 +1,5 @@
+<h1>Editar Quarto</h1>
+
+<%= render partial: 'form', locals: {inn: @inn, room: @room} %>
+
+<%= link_to 'Voltar', inn_room_path(@room.inn, @room) %>

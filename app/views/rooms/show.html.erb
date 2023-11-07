@@ -1,0 +1,19 @@
+<h1>Detalhes do quarto</h1>
+
+<p><strong>Status:</strong> <%= @room.active ? 'Ativo' : 'Inativo' %></p>
+
+<p><strong>Nome:</strong> <%= @room.name %></p>
+<p><strong>Descrição:</strong> <%= @room.description %></p>
+<p><strong>Dimensão:</strong> <%= @room.dimension %>m2</p>
+<p><strong>Acomodação máxima:</strong> <%= @room.max_accommodation %></p>
+<p><strong>Preço padrão:</strong> <%= @room.standard_price %></p>
+<p><strong>Possui banheiro:</strong> <%= @room.has_bathroom ? 'Sim' : 'Não' %></p>
+<p><strong>Possui varanda:</strong> <%= @room.has_balcony ? 'Sim' : 'Não' %></p>
+<p><strong>Possui ar-condicionado:</strong> <%= @room.has_air_conditioner ? 'Sim' : 'Não' %></p>
+<p><strong>Possui TV:</strong> <%= @room.has_tv ? 'Sim' : 'Não' %></p>
+<p><strong>Possui guarda-roupa:</strong> <%= @room.has_closet ? 'Sim' : 'Não' %></p>
+<p><strong>Possui cofre:</strong> <%= @room.has_safe ? 'Sim' : 'Não' %></p>
+<p><strong>Acessível para deficientes:</strong> <%= @room.is_disabled_accessible ? 'Sim' : 'Não' %></p>
+
+<%= link_to 'Voltar', inn_rooms_path(@room.inn)%>
+<%= link_to 'Editar', edit_inn_room_path(@room.inn, @room) %>

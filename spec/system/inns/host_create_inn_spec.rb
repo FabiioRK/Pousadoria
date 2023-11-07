@@ -57,7 +57,7 @@ describe "Anfitrião cadastra uma pousada" do
     select '00', from: 'inn[checkin_time(5i)]'
     fill_in 'Descrição', with: 'Alguma Descrição'
     fill_in 'Políticas de uso', with: 'Algumas Políticas de uso'
-    click_on 'Cadastrar pousada'
+    click_on 'Salvar'
     visit root_path
     click_on 'Minha pousada'
 
@@ -77,9 +77,9 @@ describe "Anfitrião cadastra uma pousada" do
     visit root_path
     fill_in 'Nome Fantasia', with: ''
     fill_in 'Razão Social', with: ''
-    click_on 'Cadastrar pousada'
+    click_on 'Salvar'
 
     # Assert
-    expect(page).to have_content('Cadastrar pousada') #Mensagens de erro nao estao aparecendo
+    expect(page).to have_content('Cadastrar nova pousada') #Mensagens de erro nao estao aparecendo
   end
 end

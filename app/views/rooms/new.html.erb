@@ -1,0 +1,6 @@
+<h1>Cadastrar novo quarto</h1>
+
+<%= render partial: 'form', locals: {inn: @inn, room: @room} %>
+
+<%= link_to 'Voltar', inn_rooms_path(@inn.id) %>
+

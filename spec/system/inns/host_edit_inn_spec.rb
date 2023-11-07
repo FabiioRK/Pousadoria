@@ -35,7 +35,7 @@ describe "Anfitrião edita uma pousada" do
     check 'Dinheiro'
     uncheck 'Cartão de Débito'
     fill_in 'CEP', with: '01153-123'
-    click_on 'Atualizar pousada'
+    click_on 'Salvar'
 
     # Assert
     expect(page).to have_content 'Pousada atualizada com sucesso.'

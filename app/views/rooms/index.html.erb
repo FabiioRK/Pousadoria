@@ -1,0 +1,29 @@
+<h1>Meus quartos</h1>
+
+<%= link_to 'Cadastrar novo quarto', new_inn_room_path %>
+
+<h1>Lista de Quartos</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Dimensão</th>
+    <th>Preço padrão</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.name %></td>
+      <td><%= room.description %></td>
+      <td><%= room.dimension %></td>
+      <td><%= room.standard_price %></td>
+      <td>
+        <%= link_to 'Detalhes', inn_room_path(room.inn, room) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,9 +1,13 @@
 class InnsController < ApplicationController
-  before_action :set_inn, only: [:show, :edit, :update]
   before_action :authenticate_user!
+  before_action :set_inn, only: [:show, :edit, :update, :authorize_access]
   before_action :authorize_access, only: [:edit, :update]
 
-  def show; end
+  def show
+    if @inn.nil?
+      redirect_to inn_path(current_user.inn.id), alert: 'Essa pousada não existe.'
+    end
+  end
 
   def new
     @inn = Inn.new
@@ -37,9 +41,21 @@ class InnsController < ApplicationController
     render :edit
   end
 
+  def authorize_access
+    if @inn.nil?
+      redirect_to root_path, alert: 'Essa pousada não existe.'
+    elsif current_user != @inn.user
+      redirect_to root_path, alert: 'Você não tem permissão para editar essa pousada.'
+    end
+  end
+
   private
   def set_inn
-    @inn = Inn.find(params[:id])
+    begin
+      @inn = Inn.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @inn = nil
+    end
   end
 
   def inn_params
@@ -62,10 +78,4 @@ class InnsController < ApplicationController
     filtered_params
   end
 
-  def authorize_access
-    @inn = Inn.find(params[:id])
-    unless current_user == @inn.user
-      redirect_to root_path, alert: 'Você não tem permissão para editar essa pousada.'
-    end
-  end
 end
