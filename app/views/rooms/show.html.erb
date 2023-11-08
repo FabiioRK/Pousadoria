@@ -6,7 +6,7 @@
 <p><strong>Descrição:</strong> <%= @room.description %></p>
 <p><strong>Dimensão:</strong> <%= @room.dimension %>m2</p>
 <p><strong>Acomodação máxima:</strong> <%= @room.max_accommodation %></p>
-<p><strong>Preço padrão:</strong> <%= @room.standard_price %></p>
+<p><strong>Preço padrão:</strong> <%= number_to_currency(@room.standard_price, :unit => "R$") %></p>
 <p><strong>Possui banheiro:</strong> <%= @room.has_bathroom ? 'Sim' : 'Não' %></p>
 <p><strong>Possui varanda:</strong> <%= @room.has_balcony ? 'Sim' : 'Não' %></p>
 <p><strong>Possui ar-condicionado:</strong> <%= @room.has_air_conditioner ? 'Sim' : 'Não' %></p>
@@ -15,5 +15,32 @@
 <p><strong>Possui cofre:</strong> <%= @room.has_safe ? 'Sim' : 'Não' %></p>
 <p><strong>Acessível para deficientes:</strong> <%= @room.is_disabled_accessible ? 'Sim' : 'Não' %></p>
 
-<%= link_to 'Voltar', inn_rooms_path(@room.inn)%>
-<%= link_to 'Editar', edit_inn_room_path(@room.inn, @room) %>
+<h2>Período de preços</h2>
+<% if @custom_prices.any? %>
+  <table>
+    <thead>
+    <tr>
+      <th>Data de início</th>
+      <th>Data final</th>
+      <th>Preço</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @custom_prices.each do |custom_price| %>
+      <tr>
+        <td><%= custom_price.start_date.strftime("%d/%m/%Y") %></td>
+        <td><%= custom_price.end_date.strftime("%d/%m/%Y") %></td>
+        <td><%= number_to_currency(custom_price.price, :unit => "R$") %></td>
+        <td><%= link_to "Editar", edit_custom_price_path(custom_price) %></td>
+        <td><%= button_to("Remover", custom_price_path(custom_price), method: :delete) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Não há um período de preços cadastrado para este quarto.</p>
+<% end %>
+
+<%= link_to 'Voltar', rooms_path %>
+<%= link_to 'Editar', edit_room_path(@room) %>
+<%= link_to 'Criar período de preços', new_room_custom_price_path(@room) %>

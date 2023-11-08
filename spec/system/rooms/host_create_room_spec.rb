@@ -56,7 +56,7 @@ describe "Anfitrião cria um quarto" do
 
     # Assert
     room = Room.last
-    expect(current_path).to eq inn_room_path(room.inn, room)
+    expect(current_path).to eq room_path(room)
     expect(page).to have_content 'Quarto cadastrado com sucesso.'
     expect(page).to have_content 'Quarto 1'
     expect(page).to have_content '12m2'

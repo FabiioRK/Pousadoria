@@ -4,13 +4,14 @@ class RoomsController < ApplicationController
   before_action :authorize_access, only: [:edit, :update]
 
   def index
-    @rooms = Room.all
+    @rooms = current_user.inn.rooms
   end
 
   def show
     if @room.nil?
-      redirect_to inn_rooms_path(current_user.inn.id), alert: 'Esse quarto não existe'
+      redirect_to rooms_path, alert: 'Esse quarto não existe'
     end
+    @custom_prices = @room.custom_prices
   end
 
   def new
@@ -22,20 +23,18 @@ class RoomsController < ApplicationController
     @room = current_user.inn.rooms.build(room_params)
 
     if @room.save
-      return redirect_to inn_room_path(@room.inn, @room), notice: 'Quarto cadastrado com sucesso.'
+      return redirect_to room_path(@room), notice: 'Quarto cadastrado com sucesso.'
     end
 
     flash.now.alert = 'Não foi possível cadastrar o quarto.'
     render :new
   end
 
-  def edit
-    @inn = current_user.inn
-  end
+  def edit; end
 
   def update
     if @room.update(room_params)
-      return redirect_to inn_room_path(@room.inn, @room), notice: 'Quarto atualizado com sucesso.'
+      return redirect_to room_path(@room), notice: 'Quarto atualizado com sucesso.'
     end
 
     flash.now.notice = 'Não foi possível atualizar a pousada'
@@ -52,6 +51,7 @@ class RoomsController < ApplicationController
 
   private
   def set_room
+    @inn = current_user.inn
     begin
       @room = Room.find(params[:id])
     rescue ActiveRecord::RecordNotFound

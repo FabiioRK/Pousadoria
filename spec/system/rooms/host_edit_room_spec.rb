@@ -44,12 +44,12 @@ describe "Anfitrião edita um quarto" do
     click_on 'Salvar'
 
     # Assert
-    expect(page).to have_content 'Quarto atualizado com sucesso.'
+    expect(page).to have_content('Quarto atualizado com sucesso.')
     expect(page).to have_content('Quarto 2')
     expect(page).to have_content('Dimensão: 13m2')
     expect(page).to have_content('alguma descrição')
     expect(page).to have_content('Acomodação máxima: 3')
-    expect(page).to have_content('Preço padrão: 200')
+    expect(page).to have_content('Preço padrão: R$ 200,00')
     expect(page).to have_content('Possui banheiro: Sim')
     expect(page).to have_content('Possui TV: Sim')
     expect(page).to have_content('Acessível para deficientes: Sim')

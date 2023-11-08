@@ -3,4 +3,5 @@ class Room < ApplicationRecord
   # validacoes do room estao quebrando a aplicacao por algum motivo
 
   belongs_to :inn
+  has_many :custom_prices
 end

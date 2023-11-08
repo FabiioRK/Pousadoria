@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      custom_price: 'Período de preço'
+    attributes:
+      custom_price:
+        start_date: 'Data de início'
+        end_date: 'Data final'
+        price: 'Preço'

@@ -1,6 +1,6 @@
 <h1>Meus quartos</h1>
 
-<%= link_to 'Cadastrar novo quarto', new_inn_room_path %>
+<%= link_to 'Cadastrar novo quarto', new_inn_room_path(current_user.inn) %>
 
 <h1>Lista de Quartos</h1>
 
@@ -11,6 +11,7 @@
     <th>Descrição</th>
     <th>Dimensão</th>
     <th>Preço padrão</th>
+    <th>Status</th>
   </tr>
   </thead>
   <tbody>
@@ -19,9 +20,10 @@
       <td><%= room.name %></td>
       <td><%= room.description %></td>
       <td><%= room.dimension %></td>
-      <td><%= room.standard_price %></td>
+      <td><%= number_to_currency(room.standard_price, :unit => "R$") %></td>
+      <td><%= room.active ? 'Ativo' : 'Inativo' %></td>
       <td>
-        <%= link_to 'Detalhes', inn_room_path(room.inn, room) %>
+        <%= link_to 'Detalhes', room_path(room) %>
       </td>
     </tr>
   <% end %>
