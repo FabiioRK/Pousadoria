@@ -1,12 +1,6 @@
-<!-- app/views/inns/show.html.erb -->
-
 <h1>Dados da Pousada</h1>
 
-<p><strong>Status: </strong><%= @inn.active ? 'Ativa' : 'Inativa' %></p>
-
-<p><strong><%= Inn.human_attribute_name("corporate_name") %>:</strong> <%= @inn.corporate_name %></p>
 <p><strong><%= Inn.human_attribute_name("brand_name") %>:</strong> <%= @inn.brand_name %></p>
-<p><strong><%= Inn.human_attribute_name("registration_number") %>:</strong> <%= @inn.registration_number %></p>
 <p><strong><%= Inn.human_attribute_name("phone_number") %>:</strong> <%= @inn.phone_number %></p>
 <p><strong><%= Inn.human_attribute_name("contact_email") %>:</strong> <%= @inn.contact_email %></p>
 
@@ -24,7 +18,7 @@
 <p><strong><%= Inn.human_attribute_name("pet_allowed") %>:</strong> <%= @inn.pet_allowed ? 'Sim' : 'Não' %></p>
 
 <% if @inn.payment_methods.present? %>
-  <p><strong><%= PaymentMethod.model_name.human %>:</strong></p>
+  <p><strong>Métodos de pagamento:</strong></p>
   <ul>
     <% @inn.payment_methods.each do |method| %>
       <li><%= PaymentMethod.human_attribute_name("method.#{method}") %></li>
@@ -40,4 +34,3 @@
 <p><strong><%= Inn.human_attribute_name("usage_policies") %>:</strong> <%= @inn.usage_policies %></p>
 
 <%= link_to 'Voltar', root_path %>
-<%= link_to 'Editar', edit_inn_path %>

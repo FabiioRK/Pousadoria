@@ -1,7 +1,7 @@
 pt-BR:
   activerecord:
     models:
-      payment_method: 'Método de pagamento'
+      payment_method: 'Métodos de pagamento'
     attributes:
       payment_method/method:
         cash: 'Dinheiro'

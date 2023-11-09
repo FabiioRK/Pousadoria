@@ -1,9 +1,13 @@
+require 'rails_helper'
+
 describe "Anfitrião edita uma pousada" do
   it 'a partir da página geral da sua pousada' do
     # Arrange
     user = User.create!(email: 'fabio@gmail.com', password: '123456', account_type: :host)
-    inn = Inn.create!(brand_name: 'Pousada Céu Azul', payment_methods: ["debit_card", "pix"], user: user)
-    Address.create!(postal_code: '77015-400', inn_id: inn.id)
+    inn = Inn.create!(corporate_name: 'Pousada Céu Azul LTDA', brand_name: 'Pousada Céu Azul',
+                      registration_number: '99.999.999/0001-99', phone_number: '63988889999',
+                      contact_email: 'pousada@gmail.com', payment_methods: ["debit_card", "pix"], user: user)
+    Address.create!(street: 'Avenida das palmeiras, 1000', postal_code: '77015-400', inn_id: inn.id)
 
     # Act
     login_as(user)
@@ -23,8 +27,10 @@ describe "Anfitrião edita uma pousada" do
   it 'com sucesso' do
     # Arrange
     user = User.create!(email: 'fabio@gmail.com', password: '123456', account_type: :host)
-    inn = Inn.create!(brand_name: 'Pousada Céu Azul', payment_methods: ["debit_card", "pix"], user: user)
-    Address.create!(postal_code: '77015-400', inn_id: inn.id)
+    inn = Inn.create!(corporate_name: 'Pousada Céu Azul LTDA', brand_name: 'Pousada Céu Azul',
+                      registration_number: '99.999.999/0001-99', phone_number: '63988889999',
+                      contact_email: 'pousada@gmail.com', payment_methods: ["debit_card", "pix"], user: user)
+    Address.create!(street: 'Avenida das palmeiras, 1000', postal_code: '77015-400', inn_id: inn.id)
 
     # Act
     login_as(user)

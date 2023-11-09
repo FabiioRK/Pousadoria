@@ -13,6 +13,7 @@
   <body>
   <header>
     <nav>
+      <%= link_to 'Página inicial', root_path %>
       <% if user_signed_in? %>
         <% if current_user.inn.present? && current_user.inn.valid? %>
           <%= link_to 'Minha pousada', inn_path(current_user.inn.id) %>

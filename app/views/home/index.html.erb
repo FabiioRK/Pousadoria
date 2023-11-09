@@ -1,0 +1,7 @@
+<h1>Pousadas</h1>
+
+<% @inns.each do |inn| %>
+  <% if inn.active? %>
+    <%= link_to inn.brand_name, show_inn_path(inn) %>
+  <% end %>
+<% end %>

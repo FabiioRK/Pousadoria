@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
+  get "inns/show/:id", to: "visitors#show", as: "show_inn"
 
   resources :inns, only: [:show, :new, :create, :edit, :update] do
     resources :rooms, only: [:new, :create], shallow: true do

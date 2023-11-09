@@ -1,16 +1,14 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_room, only: [:show, :edit, :update, :authorize_access]
-  before_action :authorize_access, only: [:edit, :update]
+  before_action :check_room, only: [:show, :edit, :update]
+  before_action :authorize_access, only: [:edit, :update, :new, :create]
 
   def index
     @rooms = current_user.inn.rooms
   end
 
   def show
-    if @room.nil?
-      redirect_to rooms_path, alert: 'Esse quarto não existe'
-    end
     @custom_prices = @room.custom_prices
   end
 
@@ -27,7 +25,7 @@ class RoomsController < ApplicationController
     end
 
     flash.now.alert = 'Não foi possível cadastrar o quarto.'
-    render :new
+    render :new, status: :unprocessable_entity
   end
 
   def edit; end
@@ -38,18 +36,29 @@ class RoomsController < ApplicationController
     end
 
     flash.now.notice = 'Não foi possível atualizar a pousada'
-    render :edit
+    render :edit, status: :unprocessable_entity
   end
 
   def authorize_access
+    unless @room.nil?
+      if current_user != @room.inn.user
+        return redirect_to root_path, alert: 'Você não possui permissão.'
+      end
+    end
+
+    if current_user.account_type != "host"
+      redirect_to root_path, alert: 'Você não é o dono de uma pousada.'
+    end
+  end
+
+  def check_room
     if @room.nil?
       redirect_to root_path, alert: 'Esse quarto não existe.'
-    elsif current_user != @room.inn.user
-      redirect_to root_path, alert: 'Você não tem permissão para editar esse quarto.'
     end
   end
 
   private
+
   def set_room
     @inn = current_user.inn
     begin

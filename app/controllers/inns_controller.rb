@@ -1,13 +1,9 @@
 class InnsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_inn, only: [:show, :edit, :update, :authorize_access]
-  before_action :authorize_access, only: [:edit, :update]
+  before_action :authorize_access
 
-  def show
-    if @inn.nil?
-      redirect_to inn_path(current_user.inn.id), alert: 'Essa pousada não existe.'
-    end
-  end
+  def show; end
 
   def new
     @inn = Inn.new
@@ -27,7 +23,7 @@ class InnsController < ApplicationController
     end
 
     flash.now.alert = 'Não foi possível cadastrar a pousada.'
-    render :new
+    render :new, status: :unprocessable_entity
   end
 
   def edit; end
@@ -38,14 +34,18 @@ class InnsController < ApplicationController
     end
 
     flash.now.notice = 'Não foi possível atualizar a pousada'
-    render :edit
+    render :edit, status: :unprocessable_entity
   end
 
   def authorize_access
-    if @inn.nil?
-      redirect_to root_path, alert: 'Essa pousada não existe.'
-    elsif current_user != @inn.user
-      redirect_to root_path, alert: 'Você não tem permissão para editar essa pousada.'
+    unless @inn.nil?
+      if current_user != @inn.user
+        return redirect_to root_path, alert: 'Você não possui permissão.'
+      end
+    end
+
+    if current_user.account_type != "host"
+      redirect_to root_path, alert: 'Você não é o dono de uma pousada.'
     end
   end
 

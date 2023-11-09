@@ -1,3 +1,12 @@
+<% if inn.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% inn.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for inn do |f| %>
   <div class="field">
     <%= f.label :corporate_name %>
@@ -48,7 +57,7 @@
     <%= f.check_box :pet_allowed %>
   </div>
   <div class="field">
-    <%= f.label :payment_methods, 'Métodos de pagamento' %>
+    <%= f.label :payment_methods, PaymentMethod.model_name.human %>
     <%= f.collection_check_boxes :payment_methods, PaymentMethod.methods, :first, :last %>
   </div>
   <div class="field">
