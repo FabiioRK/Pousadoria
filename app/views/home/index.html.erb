@@ -1,7 +1,15 @@
 <h1>Pousadas</h1>
 
+<h2>Mais recentes</h2>
+<% @recent_inns.each do |inn| %>
+  <li>
+    <%= link_to inn.brand_name, show_inn_path(inn) %> - <%= inn.address.city %>
+  </li>
+<% end %>
+
+<h2>Outras</h2>
 <% @inns.each do |inn| %>
-  <% if inn.active? %>
-    <%= link_to inn.brand_name, show_inn_path(inn) %>
-  <% end %>
+  <li>
+    <%= link_to inn.brand_name, show_inn_path(inn) %> - <%= inn.address.city %>
+  </li>
 <% end %>

@@ -7,7 +7,8 @@ describe "Anfitrião edita um quarto" do
     inn = Inn.create!(corporate_name: 'Pousada Céu Azul LTDA', brand_name: 'Pousada Céu Azul',
                       registration_number: '99.999.999/0001-99', phone_number: '63988889999',
                       contact_email: 'pousada@gmail.com', payment_methods: ["debit_card", "pix"], user: user)
-    Address.create!(street: 'Avenida das palmeiras, 1000', postal_code: '77015-400', inn_id: inn.id)
+    Address.create!(street: 'Avenida das palmeiras, 1000', district: 'Plano Diretor Sul',
+                    city: 'Palmas', state: 'Tocantins', postal_code: '77015-400', inn_id: inn.id)
     Room.create!(name: 'Quarto 1', description: 'alguma descrição', dimension: '13', standard_price: '200', inn_id: inn.id)
 
     # Act
@@ -32,7 +33,8 @@ describe "Anfitrião edita um quarto" do
     inn = Inn.create!(corporate_name: 'Pousada Céu Azul LTDA', brand_name: 'Pousada Céu Azul',
                       registration_number: '99.999.999/0001-99', phone_number: '63988889999',
                       contact_email: 'pousada@gmail.com', payment_methods: ["debit_card", "pix"], user: user)
-    Address.create!(street: 'Avenida das palmeiras, 1000', postal_code: '77015-400', inn_id: inn.id)
+    Address.create!(street: 'Avenida das palmeiras, 1000', district: 'Plano Diretor Sul',
+                    city: 'Palmas', state: 'Tocantins', postal_code: '77015-400', inn_id: inn.id)
     Room.create!(name: 'Quarto 1', description: 'alguma descrição', dimension: '13', standard_price: '200', inn_id: inn.id)
 
     # Act
