@@ -1,4 +1,8 @@
-<h2>Pousadas encontradas na cidade: <%= @city %></h2>
+<% if @query.nil? %>
+  <h2>Resultado da busca avançada:</h2>
+<% else %>
+  <h2>Pousadas encontradas com: <%= @query %></h2>
+<% end %>
 
 <% if @inns.present? %>
   <p><%= @inns.count %> <%= Inn.model_name.human(count: @inns.count).downcase %> <%= t(:found_a, count: @inns.count) %>.</p>

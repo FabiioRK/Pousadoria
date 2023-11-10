@@ -1,0 +1,7 @@
+pt-BR:
+  found_a:
+    one: 'encontrada'
+    other: 'encontradas'
+  found:
+    one: 'encontrado'
+    other: 'encontrados'

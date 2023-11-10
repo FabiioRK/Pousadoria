@@ -8,7 +8,7 @@ describe "Usuário se autentica" do
     # Act
     visit root_path
     click_on 'Entrar'
-    within('form') do
+    within('main form') do
       fill_in 'E-mail', with: 'fabio@gmail.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
@@ -32,7 +32,7 @@ describe "Usuário se autentica" do
     # Act
     visit root_path
     click_on 'Entrar como Anfitrião'
-    within('form') do
+    within('main form') do
       fill_in 'E-mail', with: 'fabio@gmail.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'

@@ -9,7 +9,7 @@ class CitiesController < ApplicationController
     @city = params[:city]
 
     if @city.present?
-      @inns = Inn.where(active: true).joins(:address).where(addresses: { city: @city }).order('LOWER(inns.brand_name) ASC')
+      @inns = Inn.where(active: true).joins(:address).where(addresses: { city: @city }).order("LOWER(inns.brand_name)")
 
       render :template => "visitors/cities/search"
     end
