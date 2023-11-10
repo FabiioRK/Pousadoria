@@ -35,7 +35,7 @@ class RoomsController < ApplicationController
       return redirect_to room_path(@room), notice: 'Quarto atualizado com sucesso.'
     end
 
-    flash.now.notice = 'Não foi possível atualizar a pousada'
+    flash.now.notice = 'Não foi possível atualizar o quarto.'
     render :edit, status: :unprocessable_entity
   end
 

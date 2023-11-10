@@ -1,4 +1,13 @@
-<h1>Editar período de preço</h1>
+<h1>Editar período de preços</h1>
+
+<% if @custom_price.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @custom_price.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @custom_price do |f| %>
   <div class="field">
@@ -21,4 +30,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Voltar', room_path(@room) %>
+<%= link_to 'Voltar', room_path(@custom_price.room) %>

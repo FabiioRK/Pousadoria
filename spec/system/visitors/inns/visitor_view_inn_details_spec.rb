@@ -18,7 +18,7 @@ describe "Visitante seleciona uma pousada" do
 
     # Act
     visit root_path
-    click_on 'Pousada do Sol'
+    click_on sol.address.full_city
 
     # Assert
     expect(current_path).to eq show_inn_path(sol)
@@ -44,7 +44,7 @@ describe "Visitante seleciona uma pousada" do
 
     # Act
     visit root_path
-    click_on 'Pousada do Sol'
+    click_on sol.address.full_city
     click_on 'Voltar'
 
     # Assert

@@ -15,7 +15,7 @@ class CustomPricesController < ApplicationController
     end
 
     flash.now.alert = 'Não foi possível cadastrar o período de preços'
-    render :new
+    render :new, status: :unprocessable_entity
   end
 
   def edit
@@ -28,7 +28,7 @@ class CustomPricesController < ApplicationController
     end
 
     flash.now.alert = 'Não foi possível atualizar o período de preços'
-    render :edit
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy

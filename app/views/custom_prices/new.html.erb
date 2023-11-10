@@ -1,4 +1,13 @@
-<h1>Criar período de preço</h1>
+<h1>Criar período de preços</h1>
+
+<% if @custom_price.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @custom_price.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_for [@room, @custom_price] do |f| %>
   <div class="field">

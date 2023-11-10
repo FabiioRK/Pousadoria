@@ -4,7 +4,7 @@
 <ul>
   <% @recent_inns.each do |inn| %>
     <li>
-      <%= link_to inn.brand_name, show_inn_path(inn) %> - <%= inn.address.city %>
+      <%= link_to inn.address.full_city, show_inn_path(inn) %>
     </li>
   <% end %>
 </ul>
@@ -13,7 +13,7 @@
 <ul>
   <% @inns.each do |inn| %>
     <li>
-      <%= link_to inn.brand_name, show_inn_path(inn) %> - <%= inn.address.city %>
+      <%= link_to inn.address.full_city, show_inn_path(inn) %>
     </li>
   <% end %>
 </ul>

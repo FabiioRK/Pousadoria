@@ -15,7 +15,7 @@ describe "Visitante seleciona um quarto" do
 
     # Act
     visit root_path
-    click_on 'Pousada Céu Azul'
+    click_on ceu_azul.address.full_city
     click_on 'Detalhes'
 
     # Assert
@@ -38,7 +38,7 @@ describe "Visitante seleciona um quarto" do
 
     # Act
     visit root_path
-    click_on 'Pousada Céu Azul'
+    click_on ceu_azul.address.full_city
     click_on 'Detalhes'
     click_on 'Voltar'
 
