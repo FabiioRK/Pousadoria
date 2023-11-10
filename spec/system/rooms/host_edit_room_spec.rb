@@ -47,7 +47,7 @@ describe "Anfitrião edita um quarto" do
     fill_in 'Nome', with: 'Quarto 2'
     fill_in 'Acomodação máxima', with: '3'
     check 'Possui banheiro'
-    check 'Possui tv'
+    check 'Possui TV'
     check 'Acessível para deficientes'
     click_on 'Salvar'
 

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
   get "inns/show/:id", to: "visitors#show", as: "show_inn"
+  get "rooms/show/:id", to: "visitors#show_room", as: "show_room"
   get "search_inns", to: "visitors#search_inns"
   get "advanced_search_inns", to: "visitors#advanced_search_inns"
 

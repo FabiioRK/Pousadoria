@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Visitante vê detalhes de uma pousada" do
+describe "Visitante seleciona uma pousada" do
   it 'e vê detalhes' do
     # Arrange
     fabio = User.create!(email: 'fabio@gmail.com', password: '123456', account_type: :host)

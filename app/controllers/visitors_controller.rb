@@ -11,7 +11,23 @@ class VisitorsController < ApplicationController
       return redirect_to root_path, alert: 'Pousada não existe ou se encontra inativa.'
     end
 
+    @rooms = @inn.rooms.where(active: true)
+
     render :template => "visitors/inns/show"
+  end
+
+  def show_room
+    begin
+      @room = Room.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @room = nil
+    end
+
+    if @room.nil? || !@room.active?
+      return redirect_to root_path, alert: 'Quarto não existe ou se encontra inativo.'
+    end
+
+    render :template => "visitors/rooms/show"
   end
 
   def search_inns

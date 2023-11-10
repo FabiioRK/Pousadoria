@@ -4,33 +4,50 @@
 <p><strong><%= Inn.human_attribute_name("phone_number") %>:</strong> <%= @inn.phone_number %></p>
 <p><strong><%= Inn.human_attribute_name("contact_email") %>:</strong> <%= @inn.contact_email %></p>
 
-<% if @inn.address %>
-  <h2>Endereço</h2>
-  <p><strong><%= Inn.human_attribute_name("address.street") %>:</strong> <%= @inn.address.street %></p>
-  <p><strong><%= Inn.human_attribute_name("address.district") %>:</strong> <%= @inn.address.district %></p>
-  <p><strong><%= Inn.human_attribute_name("address.city") %>:</strong> <%= @inn.address.city %></p>
-  <p><strong><%= Inn.human_attribute_name("address.state") %>:</strong> <%= @inn.address.state %></p>
-  <p><strong><%= Inn.human_attribute_name("address.postal_code") %>:</strong> <%= @inn.address.postal_code %></p>
-<% else %>
-  <p><strong>Endereço não especificado</strong></p>
-<% end %>
+<h2>Endereço</h2>
+<p><strong><%= Inn.human_attribute_name("address.street") %>:</strong> <%= @inn.address.street %></p>
+<p><strong><%= Inn.human_attribute_name("address.district") %>:</strong> <%= @inn.address.district %></p>
+<p><strong><%= Inn.human_attribute_name("address.city") %>:</strong> <%= @inn.address.city %></p>
+<p><strong><%= Inn.human_attribute_name("address.state") %>:</strong> <%= @inn.address.state %></p>
+<p><strong><%= Inn.human_attribute_name("address.postal_code") %>:</strong> <%= @inn.address.postal_code %></p>
 
 <p><strong><%= Inn.human_attribute_name("pet_allowed") %>:</strong> <%= @inn.pet_allowed ? 'Sim' : 'Não' %></p>
 
-<% if @inn.payment_methods.present? %>
-  <p><strong>Métodos de pagamento:</strong></p>
-  <ul>
-    <% @inn.payment_methods.each do |method| %>
-      <li><%= PaymentMethod.human_attribute_name("method.#{method}") %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Nenhum método de pagamento selecionado.</p>
-<% end %>
+<p><strong>Métodos de pagamento:</strong></p>
+<ul>
+  <% @inn.payment_methods.each do |method| %>
+    <li><%= PaymentMethod.human_attribute_name("method.#{method}") %></li>
+  <% end %>
+</ul>
 
 <p><strong><%= Inn.human_attribute_name("checkin_time") %>:</strong> <%= @inn.checkin_time.strftime('%H:%M') %></p>
 <p><strong><%= Inn.human_attribute_name("checkout_time") %>:</strong> <%= @inn.checkout_time.strftime('%H:%M') %></p>
 <p><strong><%= Inn.human_attribute_name("description") %>:</strong> <%= @inn.description %></p>
 <p><strong><%= Inn.human_attribute_name("usage_policies") %>:</strong> <%= @inn.usage_policies %></p>
+
+<h2>Quartos disponíveis</h2>
+<% if @rooms.any? %>
+  <table>
+    <thead>
+    <tr>
+      <th><%= Room.human_attribute_name("name") %></th>
+      <th><%= Room.human_attribute_name("dimension") %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @rooms.each do |room| %>
+      <% if room.active? %>
+        <tr>
+          <td><%= room.name %></td>
+          <td><%= room.dimension %>m2</td>
+          <td><%= link_to "Detalhes", show_room_path(room) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Não há quartos disponíveis para esta pousada.</p>
+<% end %>
 
 <%= link_to 'Voltar', root_path %>

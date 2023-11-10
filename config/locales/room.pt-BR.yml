@@ -12,7 +12,7 @@ pt-BR:
         has_bathroom: 'Possui banheiro'
         has_balcony: 'Possui varanda'
         has_air_conditioner: 'Possui ar-condicionado'
-        has_tv: 'Possui tv'
+        has_tv: 'Possui TV'
         has_closet: 'Possui guarda-roupa'
         has_safe: 'Possui cofre'
         is_disabled_accessible: 'Acessível para deficientes'

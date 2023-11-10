@@ -27,7 +27,7 @@ describe "Anfitrião cria um quarto" do
     expect(page).to have_field('Possui banheiro')
     expect(page).to have_field('Possui varanda')
     expect(page).to have_field('Possui ar-condicionado')
-    expect(page).to have_field('Possui tv')
+    expect(page).to have_field('Possui TV')
     expect(page).to have_field('Possui guarda-roupa')
     expect(page).to have_field('Possui cofre')
     expect(page).to have_field('Acessível para deficientes')
@@ -56,7 +56,7 @@ describe "Anfitrião cria um quarto" do
     check 'Possui banheiro'
     check 'Possui varanda'
     check 'Possui ar-condicionado'
-    check 'Possui tv'
+    check 'Possui TV'
     check 'Possui guarda-roupa'
     check 'Possui cofre'
     check 'Acessível para deficientes'

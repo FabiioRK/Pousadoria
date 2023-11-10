@@ -29,7 +29,7 @@ describe "Visitante faz uma busca avançada" do
       expect(page).to have_field 'Possui banheiro'
       expect(page).to have_field 'Possui varanda'
       expect(page).to have_field 'Possui ar-condicionado'
-      expect(page).to have_field 'Possui tv'
+      expect(page).to have_field 'Possui TV'
       expect(page).to have_field 'Possui guarda-roupa'
       expect(page).to have_field 'Acessível para deficientes'
     end
@@ -73,7 +73,7 @@ describe "Visitante faz uma busca avançada" do
       end
     end
 
-    it 'pelo campo possui banheiro e possui tv' do
+    it 'pelos campos possui banheiro e possui tv' do
       # Arrange
       fabio = User.create!(email: 'fabio@gmail.com', password: '123456', account_type: :host)
       joao = User.create!(email: 'joao@gmail.com', password: '123456', account_type: :host)
@@ -98,7 +98,7 @@ describe "Visitante faz uma busca avançada" do
       end
       within("main form") do
         check 'Possui banheiro'
-        check 'Possui tv'
+        check 'Possui TV'
         click_on 'Buscar'
       end
 
@@ -113,7 +113,7 @@ describe "Visitante faz uma busca avançada" do
   end
 
   context 'e encontra pousadas' do
-    it 'pelo campo permite pet e acessível para deficientes' do
+    it 'pelos campos permite pet e acessível para deficientes' do
       # Arrange
       fabio = User.create!(email: 'fabio@gmail.com', password: '123456', account_type: :host)
       joao = User.create!(email: 'joao@gmail.com', password: '123456', account_type: :host)
@@ -162,7 +162,7 @@ describe "Visitante faz uma busca avançada" do
       end
     end
 
-    it 'pelo campo possui varanda e possui ar-condicionado' do
+    it 'pelos campos possui varanda e possui ar-condicionado' do
       # Arrange
       fabio = User.create!(email: 'fabio@gmail.com', password: '123456', account_type: :host)
       joao = User.create!(email: 'joao@gmail.com', password: '123456', account_type: :host)
