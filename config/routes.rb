@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :show, :edit, :update]
   resources :custom_prices, only: [:edit, :update, :destroy]
 
+  resources :cities, only: [:index] do
+    get "search", on: :collection
+  end
+
 end

@@ -13,14 +13,16 @@
   <body>
   <header>
     <nav>
-      <%= link_to 'Página inicial', root_path %>
+      <%= link_to 'Página inicial', root_path %> |
+      <%= link_to 'Cidades', cities_path %> |
+
       <% if user_signed_in? %>
         <% if current_user.inn.present? && current_user.inn.valid? %>
-          <%= link_to 'Minha pousada', inn_path(current_user.inn.id) %>
-          <%= link_to 'Meus quartos', rooms_path %>
+          <%= link_to 'Minha pousada', inn_path(current_user.inn.id) %> |
+          <%= link_to 'Meus quartos', rooms_path %> |
         <% end %>
 
-        <%= current_user.email %>
+        <%= current_user.email %> |
 
         <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
       <% else %>

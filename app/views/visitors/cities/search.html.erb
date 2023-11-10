@@ -1,0 +1,6 @@
+<h2>Pousadas encontradas na cidade: <%= @city %></h2>
+<% @inns.each do |inn| %>
+  <li>
+    <%= link_to inn.brand_name, show_inn_path(inn) %>
+  </li>
+<% end %>

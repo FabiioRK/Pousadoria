@@ -9,7 +9,7 @@ describe "Visitante entra na página inicial" do
                       registration_number: '99.999.999/0001-99', phone_number: '63988889999',
                       contact_email: 'pousadaceuazul@gmail.com', payment_methods: ["debit_card", "pix"], user: fabio)
     sol = Inn.create!(corporate_name: 'Pousada do Sol LTDA', brand_name: 'Pousada do Sol',
-                      registration_number: '11.111.1111/0001-11', phone_number: '63922221111',
+                      registration_number: '11.111.111/0001-11', phone_number: '63922221111',
                       contact_email: 'pousadasol@gmail.com', payment_methods: ["credit_card", "debit_card"], user: joao)
     Address.create!(street: 'Avenida das palmeiras, 1000', district: 'Plano Diretor Sul',
                     city: 'Palmas', state: 'Tocantins', postal_code: '77015-400', inn_id: ceu_azul.id)
@@ -32,7 +32,7 @@ describe "Visitante entra na página inicial" do
                            registration_number: '99.999.999/0001-99', phone_number: '63988889999',
                            contact_email: 'pousadaceuazul@gmail.com', payment_methods: ["debit_card", "pix"], user: fabio)
     sol = Inn.create!(corporate_name: 'Pousada do Sol LTDA', brand_name: 'Pousada do Sol',
-                      registration_number: '11.111.1111/0001-11', phone_number: '63922221111',
+                      registration_number: '11.111.111/0001-11', phone_number: '63922221111',
                       contact_email: 'pousadasol@gmail.com', payment_methods: ["credit_card", "debit_card"],
                       user: joao, active: false)
     Address.create!(street: 'Avenida das palmeiras, 1000', district: 'Plano Diretor Sul',
