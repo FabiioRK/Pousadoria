@@ -32,13 +32,15 @@ describe "Visitante busca uma pousada" do
 
       # Act
       visit root_path
-      fill_in 'Buscar pousada', with: sol.brand_name
-      click_on 'Buscar'
+      within("header nav") do
+        fill_in 'Buscar pousada', with: sol.brand_name
+        click_on 'Buscar'
+      end
 
       # Assert
       expect(page).to have_content "Pousadas encontradas com: #{sol.brand_name}"
       expect(page).to have_content '1 pousada encontrada.'
-      within("ul") do
+      within("body > main > div > div.container.w-50 > ul") do
         expect(page).to have_content sol.brand_name
       end
     end
@@ -68,7 +70,7 @@ describe "Visitante busca uma pousada" do
       # Assert
       expect(page).to have_content "Pousadas encontradas com: #{sol.address.district}"
       expect(page).to have_content '1 pousada encontrada.'
-      within("ul") do
+      within("body > main > div > div.container.w-50 > ul") do
         expect(page).to have_content sol.brand_name
       end
     end
@@ -90,13 +92,15 @@ describe "Visitante busca uma pousada" do
 
       # Act
       visit root_path
-      fill_in 'Buscar pousada', with: sol.address.city
-      click_on 'Buscar'
+      within("header nav") do
+        fill_in 'Buscar pousada', with: sol.address.city
+        click_on 'Buscar'
+      end
 
       # Assert
       expect(page).to have_content "Pousadas encontradas com: #{sol.address.city}"
       expect(page).to have_content '1 pousada encontrada.'
-      within("ul") do
+      within("body > main > div > div.container.w-50 > ul") do
         expect(page).to have_content sol.brand_name
       end
     end
@@ -119,13 +123,15 @@ describe "Visitante busca uma pousada" do
 
     # Act
     visit root_path
-    fill_in 'Buscar pousada', with: 'Pousada'
-    click_on 'Buscar'
+    within("header nav") do
+      fill_in 'Buscar pousada', with: 'Pousada'
+      click_on 'Buscar'
+    end
 
     # Assert
     expect(page).to have_content "Pousadas encontradas com: Pousada"
     expect(page).to have_content '2 pousadas encontradas.'
-    within("ul") do
+    within("body > main > div > div.container.w-50 > ul") do
       expect(page).to have_content ceu_azul.brand_name
       expect(page).to have_content sol.brand_name
     end

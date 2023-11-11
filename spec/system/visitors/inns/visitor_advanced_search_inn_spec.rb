@@ -24,7 +24,7 @@ describe "Visitante faz uma busca avançada" do
 
     # Assert
     expect(page).to have_content 'Escolha a(s) opções desejada(s)'
-    within("main form") do
+    within("body > main > div > div.container.w-50 > form") do
       expect(page).to have_field 'Permite pet'
       expect(page).to have_field 'Possui banheiro'
       expect(page).to have_field 'Possui varanda'
@@ -59,7 +59,7 @@ describe "Visitante faz uma busca avançada" do
       within("header nav") do
         click_on 'Busca avançada'
       end
-      within("main form") do
+      within("body > main > div > div.container.w-50 > form") do
         check 'Permite pet'
         click_on 'Buscar'
       end
@@ -67,7 +67,7 @@ describe "Visitante faz uma busca avançada" do
       # Assert
       expect(page).to have_content 'Resultado da busca avançada'
       expect(page).to have_content '1 pousada encontrada.'
-      within("ul") do
+      within("body > main > div > div.container.w-50 > ul") do
         expect(page).to have_content sol.brand_name
         expect(page).not_to have_content ceu_azul.brand_name
       end
@@ -96,7 +96,7 @@ describe "Visitante faz uma busca avançada" do
       within("header nav") do
         click_on 'Busca avançada'
       end
-      within("main form") do
+      within("body > main > div > div.container.w-50 > form") do
         check 'Possui banheiro'
         check 'Possui TV'
         click_on 'Buscar'
@@ -105,7 +105,7 @@ describe "Visitante faz uma busca avançada" do
       # Assert
       expect(page).to have_content 'Resultado da busca avançada'
       expect(page).to have_content '1 pousada encontrada.'
-      within("ul") do
+      within("body > main > div > div.container.w-50 > ul") do
         expect(page).to have_content ceu_azul.brand_name
         expect(page).not_to have_content sol.brand_name
       end
@@ -146,7 +146,7 @@ describe "Visitante faz uma busca avançada" do
       within("header nav") do
         click_on 'Busca avançada'
       end
-      within("main form") do
+      within("body > main > div > div.container.w-50 > form") do
         check 'Permite pet'
         check 'Acessível para deficientes'
         click_on 'Buscar'
@@ -155,7 +155,7 @@ describe "Visitante faz uma busca avançada" do
       # Assert
       expect(page).to have_content 'Resultado da busca avançada'
       expect(page).to have_content '2 pousadas encontradas.'
-      within("ul") do
+      within("body > main > div > div.container.w-50 > ul") do
         expect(page).to have_content ceu_azul.brand_name
         expect(page).to have_content nascente.brand_name
         expect(page).not_to have_content sol.brand_name
@@ -193,7 +193,7 @@ describe "Visitante faz uma busca avançada" do
       within("header nav") do
         click_on 'Busca avançada'
       end
-      within("main form") do
+      within("body > main > div > div.container.w-50 > form") do
         check 'Possui varanda'
         check 'Possui ar-condicionado'
         click_on 'Buscar'
@@ -202,7 +202,7 @@ describe "Visitante faz uma busca avançada" do
       # Assert
       expect(page).to have_content 'Resultado da busca avançada'
       expect(page).to have_content '2 pousadas encontradas.'
-      within("ul") do
+      within("body > main > div > div.container.w-50 > ul") do
         expect(page).to have_content ceu_azul.brand_name
         expect(page).to have_content nascente.brand_name
         expect(page).not_to have_content sol.brand_name

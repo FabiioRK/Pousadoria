@@ -13,24 +13,25 @@ describe "Anfitrião cria um quarto" do
     # Act
     login_as(user)
     visit root_path
-    click_on 'Minha pousada'
     click_on 'Meus quartos'
     click_on 'Cadastrar novo quarto'
 
     # Assert
-    expect(page).to have_field('Nome')
-    expect(page).to have_field('Descrição')
-    expect(page).to have_field('Dimensão')
-    expect(page).to have_field('Acomodação máxima')
-    expect(page).to have_field('Preço padrão')
-    expect(page).to have_field('Possui banheiro')
-    expect(page).to have_field('Possui banheiro')
-    expect(page).to have_field('Possui varanda')
-    expect(page).to have_field('Possui ar-condicionado')
-    expect(page).to have_field('Possui TV')
-    expect(page).to have_field('Possui guarda-roupa')
-    expect(page).to have_field('Possui cofre')
-    expect(page).to have_field('Acessível para deficientes')
+    within("#new_room") do
+      expect(page).to have_field('Nome')
+      expect(page).to have_field('Descrição')
+      expect(page).to have_field('Dimensão')
+      expect(page).to have_field('Acomodação máxima')
+      expect(page).to have_field('Preço padrão')
+      expect(page).to have_field('Possui banheiro')
+      expect(page).to have_field('Possui banheiro')
+      expect(page).to have_field('Possui varanda')
+      expect(page).to have_field('Possui ar-condicionado')
+      expect(page).to have_field('Possui TV')
+      expect(page).to have_field('Possui guarda-roupa')
+      expect(page).to have_field('Possui cofre')
+      expect(page).to have_field('Acessível para deficientes')
+    end
   end
 
   it 'com sucesso' do
@@ -45,29 +46,30 @@ describe "Anfitrião cria um quarto" do
     # Act
     login_as(user)
     visit root_path
-    click_on 'Minha pousada'
     click_on 'Meus quartos'
     click_on 'Cadastrar novo quarto'
-    fill_in 'Nome', with: 'Quarto 1'
-    fill_in 'Descrição', with: 'Quarto espaçoso'
-    fill_in 'Dimensão', with: '12'
-    fill_in 'Acomodação máxima', with: '4'
-    fill_in 'Preço padrão', with: '200'
-    check 'Possui banheiro'
-    check 'Possui varanda'
-    check 'Possui ar-condicionado'
-    check 'Possui TV'
-    check 'Possui guarda-roupa'
-    check 'Possui cofre'
-    check 'Acessível para deficientes'
-    click_on 'Salvar'
+    within("#new_room") do
+      fill_in 'Nome', with: 'Quarto 1'
+      fill_in 'Descrição', with: 'Quarto espaçoso'
+      fill_in 'Dimensão', with: '12'
+      fill_in 'Acomodação máxima', with: '4'
+      fill_in 'Preço padrão', with: '200'
+      check 'Possui banheiro'
+      check 'Possui varanda'
+      check 'Possui ar-condicionado'
+      check 'Possui TV'
+      check 'Possui guarda-roupa'
+      check 'Possui cofre'
+      check 'Acessível para deficientes'
+      click_on 'Salvar'
+    end
 
     # Assert
     room = Room.last
     expect(current_path).to eq room_path(room)
     expect(page).to have_content 'Quarto cadastrado com sucesso.'
     expect(page).to have_content 'Quarto 1'
-    expect(page).to have_content '12m2'
+    expect(page).to have_content '12m²'
   end
 
 end

@@ -15,7 +15,7 @@ describe "Visitante entra em uma pousada" do
 
     # Act
     visit root_path
-    click_on ceu_azul.address.full_city
+    click_on ceu_azul.full_description
 
     # Assert
     expect(page).to have_content 'Quartos disponíveis'
@@ -38,7 +38,7 @@ describe "Visitante entra em uma pousada" do
 
     # Act
     visit root_path
-    click_on ceu_azul.address.full_city
+    click_on ceu_azul.full_description
 
     # Assert
     expect(page).to have_content 'Quartos disponíveis'

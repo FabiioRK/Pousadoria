@@ -15,8 +15,8 @@ describe "Visitante seleciona um quarto" do
 
     # Act
     visit root_path
-    click_on ceu_azul.address.full_city
-    click_on 'Detalhes'
+    click_on ceu_azul.full_description
+    click_on 'Visualizar'
 
     # Assert
     expect(current_path).to eq show_room_path(room)
@@ -38,8 +38,8 @@ describe "Visitante seleciona um quarto" do
 
     # Act
     visit root_path
-    click_on ceu_azul.address.full_city
-    click_on 'Detalhes'
+    click_on ceu_azul.full_description
+    click_on 'Visualizar'
     click_on 'Voltar'
 
     # Assert

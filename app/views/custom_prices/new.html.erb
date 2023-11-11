@@ -1,33 +1,37 @@
-<h1>Criar período de preços</h1>
+<h1 class="text-center m-4">Criar período de preços</h1>
 
-<% if @custom_price.errors.any? %>
-  <p>Verifique os erros abaixo:</p>
-  <ul>
-    <% @custom_price.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container w-25">
+  <% if @custom_price.errors.any? %>
+    <div class="alert alert-danger">
+      <p>Verifique os erros abaixo:</p>
+      <ul>
+        <% @custom_price.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_for [@room, @custom_price] do |f| %>
-  <div class="field">
-    <%= f.label :start_date %>
-    <%= f.date_field :start_date %>
-  </div>
+  <%= form_for [@room, @custom_price] do |f| %>
+    <div class="field">
+      <%= f.label :start_date, class: "fw-bold" %>
+      <%= f.date_field :start_date, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :end_date %>
-    <%= f.date_field :end_date %>
-  </div>
+    <div class="field">
+      <%= f.label :end_date, class: "fw-bold" %>
+      <%= f.date_field :end_date, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
+    <div class="field">
+      <%= f.label :price, class: "fw-bold" %>
+      <%= f.number_field :price, class: "form-control" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit 'Salvar' %>
-  </div>
-<% end %>
+    <div class="actions mt-2">
+      <%= f.submit 'Salvar', class: "btn btn-success" %>
+      <%= link_to 'Voltar', room_path(@room), class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
 
-<%= link_to 'Voltar', room_path(@room) %>

@@ -9,4 +9,8 @@ class Inn < ApplicationRecord
   has_many :rooms
 
   serialize :payment_methods, JSON
+
+  def full_description
+    "#{brand_name} | #{address.city}-#{address.state}"
+  end
 end

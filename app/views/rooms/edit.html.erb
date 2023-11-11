@@ -1,73 +1,91 @@
-<h1>Editar Quarto</h1>
+<h1 class="text-center m-4">Editar quarto</h1>
 
-<% if @room.errors.any? %>
-  <p>Verifique os erros abaixo:</p>
-  <ul>
-    <% @room.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container w-75">
+  <% if @room.errors.any? %>
+    <div class="alert alert-danger">
+      <p>Verifique os erros abaixo:</p>
+      <ul>
+        <% @room.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_with model: @room do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :dimension %>
-    <%= f.number_field :dimension %>
-  </div>
-  <div class="field">
-    <%= f.label :max_accommodation %>
-    <%= f.number_field :max_accommodation %>
-  </div>
-  <div class="field">
-    <%= f.label :standard_price %>
-    <%= f.number_field :standard_price %>
-  </div>
-  <div class="field">
-    <%= f.label :has_bathroom %>
-    <%= f.check_box :has_bathroom %>
-  </div>
-  <div class="field">
-    <%= f.label :has_balcony %>
-    <%= f.check_box :has_balcony %>
-  </div>
-  <div class="field">
-    <%= f.label :has_air_conditioner %>
-    <%= f.check_box :has_air_conditioner %>
-  </div>
-  <div class="field">
-    <%= f.label :has_tv %>
-    <%= f.check_box :has_tv %>
-  </div>
-  <div class="field">
-    <%= f.label :has_closet %>
-    <%= f.check_box :has_closet %>
-  </div>
-  <div class="field">
-    <%= f.label :has_safe %>
-    <%= f.check_box :has_safe %>
-  </div>
-  <div class="field">
-    <%= f.label :is_disabled_accessible %>
-    <%= f.check_box :is_disabled_accessible %>
-  </div>
-  <div class="field">
-    <% if @room.valid? %>
-      <%= f.label :active %>
-      <%= f.check_box :active %>
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Salvar' %>
-  </div>
-<% end %>
-
-
-<%= link_to 'Voltar', room_path(@room) %>
+  <%= form_with model: @room, html: { class: "row g-3 mx-auto" } do |f| %>
+    <div class="col-md-6">
+      <%= f.label :name, class: "form-check-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :dimension, class: "form-check-label" %>
+      <%= f.number_field :dimension, class: "form-control" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :max_accommodation, class: "form-check-label" %>
+      <%= f.number_field :max_accommodation, class: "form-control" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :standard_price, class: "form-check-label" %>
+      <%= f.number_field :standard_price, class: "form-control" %>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :description, class: "form-check-label" %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <div class="d-flex col-md-3">
+      <%= f.label :has_bathroom, class: "form-check-label" %>
+      <div class="form-switch ms-2">
+        <%= f.check_box :has_bathroom, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="d-flex col-md-3">
+      <%= f.label :has_balcony, class: "form-check-label" %>
+      <div class="form-switch ms-2">
+        <%= f.check_box :has_balcony, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="d-flex col-md-3">
+      <%= f.label :has_air_conditioner, class: "form-check-label" %>
+      <div class="form-switch ms-2">
+        <%= f.check_box :has_air_conditioner, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="d-flex col-md-3">
+      <%= f.label :has_tv, class: "form-check-label" %>
+      <div class="form-switch ms-2">
+        <%= f.check_box :has_tv, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="d-flex col-md-3">
+      <%= f.label :has_closet, class: "form-check-label" %>
+      <div class="form-switch ms-2">
+        <%= f.check_box :has_closet, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="d-flex col-md-3">
+      <%= f.label :has_safe, class: "form-check-label" %>
+      <div class="form-switch ms-2">
+        <%= f.check_box :has_safe, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="d-flex col-md-3">
+      <%= f.label :is_disabled_accessible, class: "form-check-label" %>
+      <div class="form-switch ms-2">
+        <%= f.check_box :is_disabled_accessible, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="d-flex col-md-3">
+      <% if @room.valid? %>
+        <%= f.label :active, class: "form-check-label" %>
+        <div class="form-switch ms-2">
+          <%= f.check_box :active, class: "form-check-input" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Salvar', class: "btn btn-success" %>
+      <%= link_to 'Voltar', rooms_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>

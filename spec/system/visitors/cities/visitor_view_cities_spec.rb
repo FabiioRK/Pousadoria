@@ -24,7 +24,7 @@ describe "Visitante vê menu de cidades" do
 
     # Assert
     expect(page).to have_content 'Lista de cidades'
-    within("ul") do
+    within("body > main > div > div.container.w-50 > ul") do
       expect(page).to have_content 'Palmas'
       expect(page).to have_content 'Salvador'
     end
@@ -60,7 +60,7 @@ describe "Visitante vê menu de cidades" do
 
     # Assert
     expect(page).to have_content "Pousadas encontradas na cidade: #{ceu_azul.address.city}"
-    within("ul") do
+    within("body > main > div > div.container.w-50 > ul") do
       expect(page).to have_content ceu_azul.brand_name
       expect(page).to have_content nascente.brand_name
       expect(page).not_to have_content sol.brand_name

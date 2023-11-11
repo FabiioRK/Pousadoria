@@ -1,55 +1,40 @@
-<h2>Escolha a(s) opções desejada(s)</h2>
+<div class="container w-50">
+  <h2 class="text-center m-4">Escolha a(s) opções desejada(s)</h2>
 
-<%= form_tag(advanced_search_inns_path, method: :get) do %>
-  <div class="form-group">
-    <%= label_tag :pet_allowed do %>
-      <%= check_box_tag :pet_allowed %>
-      <%= Inn.human_attribute_name("pet_allowed") %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :has_bathroom do %>
-      <%= check_box_tag :has_bathroom %>
-      <%= Room.human_attribute_name("has_bathroom") %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :has_balcony do %>
-      <%= check_box_tag :has_balcony %>
-      <%= Room.human_attribute_name("has_balcony") %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :has_air_conditioner do %>
-      <%= check_box_tag :has_air_conditioner %>
-      <%= Room.human_attribute_name("has_air_conditioner") %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :has_tv do %>
-      <%= check_box_tag :has_tv %>
-      <%= Room.human_attribute_name("has_tv") %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :has_closet do %>
-      <%= check_box_tag :has_closet %>
-      <%= Room.human_attribute_name("has_closet") %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :has_safe do %>
-      <%= check_box_tag :has_safe %>
-      <%= Room.human_attribute_name("has_safe") %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :is_disabled_accessible do %>
-      <%= check_box_tag :is_disabled_accessible %>
-      <%= Room.human_attribute_name("is_disabled_accessible") %>
-    <% end %>
-  </div>
-  <%= button_tag 'Buscar'%>
-<% end %>
-
-<%= link_to 'Voltar', root_path %>
+  <%= form_tag(advanced_search_inns_path, method: :get) do %>
+    <div class="form-check">
+      <%= check_box_tag :pet_allowed, class: "form-check-input" %>
+      <%= label_tag :pet_allowed, Inn.human_attribute_name("pet_allowed"), class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag :has_bathroom, class: "form-check-input" %>
+      <%= label_tag :has_bathroom, Room.human_attribute_name("has_bathroom"), class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag :has_balcony, class: "form-check-input" %>
+      <%= label_tag :has_balcony, Room.human_attribute_name("has_balcony"), class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag :has_air_conditioner, class: "form-check-input" %>
+      <%= label_tag :has_air_conditioner, Room.human_attribute_name("has_air_conditioner"), class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag :has_tv, class: "form-check-input" %>
+      <%= label_tag :has_tv, Room.human_attribute_name("has_tv"), class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag :has_closet, class: "form-check-input" %>
+      <%= label_tag :has_closet, Room.human_attribute_name("has_closet"), class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag :has_safe, class: "form-check-input" %>
+      <%= label_tag :has_safe, Room.human_attribute_name("has_safe"), class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag :is_disabled_accessible, class: "form-check-input" %>
+      <%= label_tag :is_disabled_accessible, Room.human_attribute_name("is_disabled_accessible"), class: "form-check-label" %>
+    </div>
+    <%= button_tag 'Buscar', class: "btn btn-primary mt-3" %>
+    <%= link_to 'Voltar', root_path, class: "btn btn-secondary mt-3" %>
+  <% end %>
+</div>

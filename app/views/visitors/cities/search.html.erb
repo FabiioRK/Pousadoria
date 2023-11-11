@@ -1,16 +1,18 @@
-<h2>Pousadas encontradas na cidade: <%= @city %></h2>
+<div class="container w-50">
+  <h2 class="text-center m-4">Pousadas encontradas na cidade: <%= @city %></h2>
 
-<% if @inns.present? %>
-  <p><%= @inns.count %> <%= Inn.model_name.human(count: @inns.count).downcase %> <%= t(:found_a, count: @inns.count) %>.</p>
-  <ul>
-    <% @inns.each do |inn| %>
-      <li>
-        <%= link_to inn.brand_name, show_inn_path(inn) %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Nenhum registro encontrado.</p>
-<% end %>
+  <% if @inns.present? %>
+    <p class="fw-bold"><%= @inns.count %> <%= Inn.model_name.human(count: @inns.count).downcase %> <%= t(:found_a, count: @inns.count) %>.</p>
+    <ul class="list-group">
+      <% @inns.each do |inn| %>
+        <li class="list-group-item">
+          <%= link_to inn.brand_name, show_inn_path(inn), class: "text-decoration-none text-dark" %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Nenhum registro encontrado.</p>
+  <% end %>
 
-<%= link_to 'Voltar', cities_path %>
+  <%= link_to 'Voltar', cities_path, class: "btn btn-secondary mt-3" %>
+</div>

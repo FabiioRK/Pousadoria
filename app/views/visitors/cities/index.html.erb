@@ -1,10 +1,12 @@
-<h1>Lista de cidades</h1>
-<ul>
-  <% @cities.each do |city| %>
-    <li>
-      <%= link_to city, search_cities_path(city: city) %>
-    </li>
-  <% end %>
-</ul>
+<div class="container w-50">
+  <h1 class="text-center m-4">Lista de cidades</h1>
+  <ul class="list-group">
+    <% @cities.each do |city| %>
+      <li class="list-group-item">
+        <%= link_to city, search_cities_path(city: city), class: "text-decoration-none text-dark" %>
+      </li>
+    <% end %>
+  </ul>
 
-<%= link_to 'Voltar', root_path %>
+  <%= link_to 'Voltar', root_path, class: "btn btn-secondary mt-3" %>
+</div>

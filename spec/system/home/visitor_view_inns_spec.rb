@@ -21,8 +21,8 @@ describe "Visitante entra na página inicial" do
 
     # Assert
     expect(page).to have_content 'Pousadas'
-    expect(page).to have_content "#{ceu_azul.address.full_city}"
-    expect(page).to have_content "#{sol.address.full_city}"
+    expect(page).to have_content "#{ceu_azul.full_description}"
+    expect(page).to have_content "#{sol.full_description}"
   end
 
   it 'e não vê pousadas inativas' do
@@ -45,7 +45,7 @@ describe "Visitante entra na página inicial" do
 
     # Assert
     expect(page).to have_content 'Pousadas'
-    expect(page).to have_content ceu_azul.address.full_city
-    expect(page).not_to have_content sol.address.full_city
+    expect(page).to have_content ceu_azul.full_description
+    expect(page).not_to have_content sol.full_description
   end
 end

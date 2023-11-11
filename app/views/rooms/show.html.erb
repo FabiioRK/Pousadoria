@@ -1,46 +1,78 @@
-<h1>Detalhes do quarto</h1>
+<div class="container w-75">
+  <h1 class="text-center m-4">Detalhes do quarto</h1>
 
-<p><strong>Status:</strong> <%= @room.active ? 'Ativo' : 'Inativo' %></p>
+  <div class="row">
+    <div class="col-md-4">
+      <p><strong>Status:</strong> <%= @room.active ? 'Ativo' : 'Inativo' %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("name") %>: </strong> <%= @room.name %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("dimension") %>: </strong> <%= @room.dimension %>m²</p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("max_accommodation") %>: </strong> <%= @room.max_accommodation %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("standard_price") %>: </strong><%= number_to_currency(@room.standard_price, :unit => "R$") %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("has_bathroom") %>: </strong> <%= @room.has_bathroom ? 'Sim' : 'Não' %>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("has_balcony") %>: </strong> <%= @room.has_balcony ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("has_air_conditioner") %>
+        :</strong> <%= @room.has_air_conditioner ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("has_tv") %>: </strong> <%= @room.has_tv ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("has_closet") %>: </strong> <%= @room.has_closet ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("has_safe") %>: </strong> <%= @room.has_safe ? 'Sim' : 'Não' %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("is_disabled_accessible") %>: </strong> <%= @room.is_disabled_accessible ? 'Sim' : 'Não' %></p>
+    </div>
+  </div>
+    <div class="col-md-4">
+      <p><strong><%= Room.human_attribute_name("description") %>: </strong></p>
+    </div>
+    <%= link_to 'Editar', edit_room_path(@room), class: "btn btn-warning mt-3" %>
 
-<p><strong><%= Room.human_attribute_name("name") %>:</strong> <%= @room.name %></p>
-<p><strong><%= Room.human_attribute_name("description") %>:</strong> <%= @room.description %></p>
-<p><strong><%= Room.human_attribute_name("dimension") %>:</strong> <%= @room.dimension %>m2</p>
-<p><strong><%= Room.human_attribute_name("max_accommodation") %>:</strong> <%= @room.max_accommodation %></p>
-<p><strong><%= Room.human_attribute_name("standard_price") %>:</strong> <%= number_to_currency(@room.standard_price, :unit => "R$") %></p>
-<p><strong><%= Room.human_attribute_name("has_bathroom") %>:</strong> <%= @room.has_bathroom ? 'Sim' : 'Não' %></p>
-<p><strong><%= Room.human_attribute_name("has_balcony") %>:</strong> <%= @room.has_balcony ? 'Sim' : 'Não' %></p>
-<p><strong><%= Room.human_attribute_name("has_air_conditioner") %>:</strong> <%= @room.has_air_conditioner ? 'Sim' : 'Não' %></p>
-<p><strong><%= Room.human_attribute_name("has_tv") %>:</strong> <%= @room.has_tv ? 'Sim' : 'Não' %></p>
-<p><strong><%= Room.human_attribute_name("has_closet") %>:</strong> <%= @room.has_closet ? 'Sim' : 'Não' %></p>
-<p><strong><%= Room.human_attribute_name("has_safe") %>:</strong> <%= @room.has_safe ? 'Sim' : 'Não' %></p>
-<p><strong><%= Room.human_attribute_name("is_disabled_accessible") %>:</strong> <%= @room.is_disabled_accessible ? 'Sim' : 'Não' %></p>
-
-<h2><%= CustomPrice.model_name.human %></h2>
-<% if @custom_prices.any? %>
-  <table>
-    <thead>
-    <tr>
-      <th>Data de início</th>
-      <th>Data final</th>
-      <th>Preço</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @custom_prices.each do |custom_price| %>
+  <h2 class="text-center m-4"><%= CustomPrice.model_name.human %></h2>
+  <% if @custom_prices.any? %>
+    <table class="table table-bordered mt-3">
+      <thead>
       <tr>
-        <td><%= custom_price.start_date.strftime("%d/%m/%Y") %></td>
-        <td><%= custom_price.end_date.strftime("%d/%m/%Y") %></td>
-        <td><%= number_to_currency(custom_price.price, :unit => "R$") %></td>
-        <td><%= link_to "Editar", edit_custom_price_path(custom_price) %></td>
-        <td><%= button_to("Remover", custom_price_path(custom_price), method: :delete) %></td>
+        <th>Data de início</th>
+        <th>Data final</th>
+        <th>Preço</th>
+        <th colspan="2">Ações</th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>Não há um período de preços cadastrado para este quarto.</p>
-<% end %>
+      </thead>
+      <tbody>
+      <% @custom_prices.each do |custom_price| %>
+        <tr>
+          <td><%= custom_price.start_date.strftime("%d/%m/%Y") %></td>
+          <td><%= custom_price.end_date.strftime("%d/%m/%Y") %></td>
+          <td><%= number_to_currency(custom_price.price, :unit => "R$") %></td>
+          <td><%= link_to "Editar", edit_custom_price_path(custom_price), class: "btn btn-warning btn-sm" %></td>
+          <td><%= button_to("Remover", custom_price_path(custom_price), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm") %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Não há um período de preços cadastrado para este quarto.</p>
+  <% end %>
 
-<%= link_to 'Voltar', rooms_path %>
-<%= link_to 'Editar', edit_room_path(@room) %>
-<%= link_to 'Criar período de preços', new_room_custom_price_path(@room) %>
+  <%= link_to 'Criar período de preços', new_room_custom_price_path(@room), class: "btn btn-primary mt-3" %>
+  <%= link_to 'Voltar', rooms_path, class: "btn btn-secondary mt-3" %>
+</div>
